@@ -17,11 +17,13 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
         const userData = { email, password, firstName, lastName, address, birthday };
 
         try {
-            const response = await fetch('https://example.com/api/signup', {
+            console.log(JSON.stringify(userData))
+            const response = await fetch('http://localhost:8080/api/signup', {
+                //mode: 'no-cors',
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json; charset=utf-8' },
                 body: JSON.stringify(userData),
-            });
+            })
 
             if (!response.ok) throw new Error('Fehler bei der Registrierung');
 
