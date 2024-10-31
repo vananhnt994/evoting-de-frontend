@@ -1,38 +1,53 @@
-.App {
+/* App.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4; /* Heller Hintergrund */
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #007bff; /* Blaue Hintergrundfarbe für den Header */
+  color: white;
+  padding: 15px 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  margin: 5px; /* Abstand zwischen den Buttons */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  opacity: 0.9; /* Leichte Transparenz beim Hover */
+}
+
+/* Container für die Formulare */
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center; /* Zentriert die Formulare horizontal */
+  align-items: center; /* Zentriert die Formulare vertikal */
+  min-height: calc(100vh - 60px); /* Höhe des Containers minus Header-Höhe */
 }
 
-.App-link {
-  color: #61dafb;
+/* Stil für Fehlermeldungen und Erfolgsmeldungen */
+.error-message,
+.success-message {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Responsive Design */
+@media (max-width: 600px) {
+  button {
+    width: 100%; /* Buttons auf kleinen Bildschirmen vollflächig machen */
+    margin-top: 10px; /* Abstand zwischen den Buttons auf kleinen Bildschirmen */
   }
 }
