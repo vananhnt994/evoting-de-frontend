@@ -5,13 +5,13 @@ import styles from './Signup.module.css';
 const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
     const [birthday, setBirthday] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-
     const signUpHandler = async (e) => {
         e.preventDefault();
         const userData = { email, password, firstName, lastName, address, birthday };
@@ -25,10 +25,11 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
                 body: JSON.stringify(userData),
             })
 
-            if (!response.ok) throw new Error('Fehler bei der Registrierung');
+            if (!response.ok) throw new Error(response.body);
+            const data = await response.json();
+            console.log('Benutzer-ID:', data.id);
 
-            setSuccessMessage('Registrierung erfolgreich!');
-            // Schließe das Formular nach erfolgreicher Registrierung
+            setSuccessMessage('Signup erfolgreich! Deine Benutzer-ID ist: ' + data.id);
             onClose();
         } catch (error) {
             console.error(error);
@@ -65,50 +66,61 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
                     />
                 </div>
                 <div className={styles.formGroup}>
-                    <label htmlFor="firstName">Vorname:</label>
+                    <label htmlFor="signup-confirm-password">Passwort bestätigen:</label>
                     <input
-                        type="text"
-                        id="firstName"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        type="password"
+                        id="confirm-password" // ID für das Bestätigungsfeld
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                     />
                 </div>
-                <div className={styles.formGroup}>
-                    <label htmlFor="lastName">Nachname:</label>
-                    <input
-                        type="text"
-                        id="lastName"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className={styles.formGroup}>
-                    <label htmlFor="address">Adresse:</label>
-                    <input
-                        type="text"
-                        id="address"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className={styles.formGroup}>
-                    <label htmlFor="birthday">Geburtstag:</label>
-                    <input
-                        type="date"
-                        id="birthday"
-                        value={birthday}
-                        onChange={(e) => setBirthday(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Registrieren</button>
-                <button type="button" onClick={onClose}>Abbrechen</button> {/* Abbrechen-Button */}
+                    <div className={styles.formGroup}>
+                        <label htmlFor="firstName">Vorname:</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="lastName">Nachname:</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="address">Adresse:</label>
+                        <input
+                            type="text"
+                            id="address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="birthday">Geburtstag:</label>
+                        <input
+                            type="date"
+                            id="birthday"
+                            value={birthday}
+                            onChange={(e) => setBirthday(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Registrieren</button>
+                    <button type="button" onClick={onClose}>Abbrechen</button>
+                    {/* Abbrechen-Button */}
             </form>
         </div>
-    );
+);
 };
 
 export default Signup;

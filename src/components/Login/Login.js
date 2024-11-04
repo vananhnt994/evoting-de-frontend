@@ -1,6 +1,7 @@
 // Login.js
 import React, { useState } from 'react';
 import styles from './Login.module.css'; // Du kannst ein CSS-Modul für Stile verwenden
+import axios from 'axios';
 
 const Login = ({ onClose }) => {
   const [email, setEmail] = useState('');
@@ -10,22 +11,22 @@ const Login = ({ onClose }) => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const userData = { email, password };
 
     try {
-      const response = await fetch('https://example.com/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData),
+      const response = await axios.post('http://localhost:8080/api/login', JSON.stringify({
+        "email":email,
+        "password":password,
+      }),{ headers: {  "Content-Type": "application/json"  }
       });
-
-      if (!response.ok) throw new Error('Fehler beim Login');
-
-      setSuccessMessage('Login erfolgreich!');
-      onClose(); // Schließe das Formular nach erfolgreichem Login
+      if (response.data === "Login erfolgreich!") {
+        setSuccessMessage("Login erfolgreich!");
+        // Hier kannst du den Benutzer weiterleiten oder den Status aktualisieren
+      } else {
+        setErrorMessage("Login fehlgeschlagen!");
+      }
     } catch (error) {
-      console.error(error);
-      setErrorMessage(error.message);
+      console.error("Es gab einen Fehler beim Login:", error);
+      setErrorMessage("Ein Fehler ist aufgetreten. Bitte versuche es später erneut.");
     }
   };
 
