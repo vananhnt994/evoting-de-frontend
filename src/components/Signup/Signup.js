@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from './Signup.module.css';
 
-const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
+const Signup = ({ onClose,onRegister }) => { // Füge onClose als Prop hinzu
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -12,6 +12,8 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
     const [birthday, setBirthday] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [isRegistered, setIsRegistered] = useState(false); // Zustand für den Registrierungsstatus
+
     const signUpHandler = async (e) => {
         e.preventDefault();
         const userData = { email, password, firstName, lastName, address, birthday };
@@ -25,10 +27,13 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
                 body: JSON.stringify(userData),
             })
 
-            if (!response.ok) throw new Error(response.body);
+            if (!response.ok){
+                let errorMess = await  response.text()
+                throw new Error(errorMess);
+            }
             const data = await response.json();
-            console.log('Benutzer-ID:', data.id);
-
+            setIsRegistered(true);
+            onRegister(response);
             setSuccessMessage('Signup erfolgreich! Deine Benutzer-ID ist: ' + data.id);
             onClose();
         } catch (error) {
@@ -39,6 +44,10 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
 
     return (
         <div className={styles.container}>
+            {isRegistered ? (
+                <h2>Willkommen, {firstName}, {lastName}!</h2> // Zeige eine Willkommensnachricht an
+            ) : (
+                <>
             <h2>Signup</h2>
 
             {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
@@ -117,8 +126,10 @@ const Signup = ({ onClose }) => { // Füge onClose als Prop hinzu
                     </div>
                     <button type="submit">Registrieren</button>
                     <button type="button" onClick={onClose}>Abbrechen</button>
-                    {/* Abbrechen-Button */}
+
             </form>
+                </>
+            )}
         </div>
 );
 };

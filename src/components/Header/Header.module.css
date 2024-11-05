@@ -1,45 +1,28 @@
-/* header.module.css */
-
 .header {
-  background-color: #007bff; /* Blaue Hintergrundfarbe */
-  color: white;
-  padding: 15px 20px;
-  display: flex; /* Flexbox für die Anordnung der Elemente */
-  justify-content: space-between; /* Abstand zwischen Logo und Buttons */
-  align-items: center; /* Vertikale Zentrierung */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
+  display: flex;
+  justify-content: space-between; /* Platz zwischen Titel und Buttons */
+  align-items: center; /* Vertikale Ausrichtung */
+  padding: 20px; /* Innenabstand */
+  background-color: #4CAF50; /* Hintergrundfarbe */
+  color: white; /* Textfarbe */
 }
 
 .title {
-  font-size: 24px; /* Schriftgröße für den Titel */
-  margin: 0; /* Kein Margin für den Titel */
+  font-size: 24px; /* Schriftgröße des Titels */
+  margin: 0; /* Kein Außenabstand */
 }
 
 .button {
-  background-color: transparent; /* Transparenter Hintergrund für Buttons */
-  color: white;
-  border: 2px solid white; /* Weißer Rand um die Buttons */
+  background-color: #f1f1f1; /* Hintergrundfarbe der Buttons */
+  color: #333; /* Textfarbe der Buttons */
+  border: none; /* Keine Rahmenlinie */
+  padding: 10px 15px; /* Innenabstand der Buttons */
+  margin-left: 10px; /* Abstand zwischen den Buttons */
+  cursor: pointer; /* Zeiger-Cursor beim Hover über die Buttons */
   border-radius: 5px; /* Abgerundete Ecken */
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Sanfte Übergänge bei Hover */
+  transition: background-color 0.3s ease; /* Übergangseffekt für den Hover-Effekt */
 }
 
 .button:hover {
-  background-color: white; /* Hintergrundfarbe beim Hover */
-  color: #007bff; /* Textfarbe beim Hover ändern */
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .header {
-    flex-direction: column; /* Elemente untereinander auf kleinen Bildschirmen anordnen */
-    align-items: flex-start; /* Links ausrichten auf kleinen Bildschirmen */
-    padding: 10px; /* Weniger Padding auf kleinen Bildschirmen */
-  }
-
-  .button {
-    width: 100%; /* Buttons auf volle Breite setzen auf kleinen Bildschirmen */
-    margin-top: 5px; /* Abstand zwischen den Buttons auf kleinen Bildschirmen */
-  }
+  background-color: #ddd; /* Hintergrundfarbe beim Hover über die Buttons */
 }

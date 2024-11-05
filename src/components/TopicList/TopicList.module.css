@@ -1,0 +1,48 @@
+.city {
+    padding: 20px; /* Innenabstand um den Inhalt */
+    background-color: #ffffff; /* Hintergrundfarbe der Stadtansicht */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Schatteneffekt für Tiefe */
+    margin-top: 20px; /* Abstand nach oben zu anderen Elementen */
+}
+
+.cityTitle {
+    font-size: 24px; /* Schriftgröße des Stadttitels */
+    color: #333; /* Textfarbe des Stadttitels */
+    margin-bottom: 10px; /* Abstand unter dem Titel */
+}
+
+.cityDescription {
+    line-height: 1.6; /* Zeilenhöhe für bessere Lesbarkeit */
+    color: #555; /* Textfarbe für die Beschreibung */
+}
+
+.cityList {
+    list-style-type: none; /* Entfernt Aufzählungszeichen von der Liste */
+    padding: 0; /* Entfernt Innenabstand der Liste */
+}
+
+.cityItem {
+    background-color: #f1f1f1; /* Hintergrundfarbe der Listenelemente */
+    border-radius: 5px; /* Abgerundete Ecken der Listenelemente */
+    padding: 10px; /* Innenabstand der Listenelemente */
+    margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
+}
+.button {
+    background-color: #4CAF50; /* Hintergrundfarbe */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    border: none; /* Keine Rahmenlinie */
+    border-radius: 5px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeiger-Cursor beim Hover über den Button */
+    transition: background-color 0.3s ease;
+}
+.button:hover {
+    background-color: #45a049; /* Hintergrundfarbe beim Hover über den Button */
+}
+.buttonContainer {
+    display: flex; /* Verwende Flexbox */
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    margin-top: 20px; /* Abstand nach oben */
+}
