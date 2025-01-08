@@ -7,5 +7,6 @@ describe('Landing Page', () => {
     // check for buttons
     cy.get('button.Header_button__fU6fP').eq(0).should('contain.text', 'Signup').and('be.visible');
     cy.get('button.Header_button__fU6fP').eq(1).should('contain.text', 'Login').and('be.visible');
+
   })
 })
