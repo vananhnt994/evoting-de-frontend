@@ -24,3 +24,17 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+
+### Install Cypress 
+Install Cypress for running the automated regression 
+### Install Dependencies
+- `npm i --save-dev cypress`
+## Available Scripts
+In the project directory, you can run:
+### `npx cypress open`
+This opens the visual test runner.
+### `npx cypress run`
+This runs the tests in the terminal. 
+### `npm run e2e:chrome`
+This runs the tests in e2e folder in chrome, using the headed version. 
