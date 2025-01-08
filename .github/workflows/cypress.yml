@@ -19,9 +19,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run build (if necessary)
-        run: npm run build  # Ensure this is needed; comment out if not required
       
       - name: Start application
         run: npm start &  # Start the app in the background
@@ -33,4 +30,4 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
-          start: npm start  # Start the app with npm start
+          start: npm cypress run
