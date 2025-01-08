@@ -27,7 +27,7 @@ jobs:
         run: |
           sleep 10  # Adjust this as needed to ensure the app has fully started
 
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm cypress run
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
