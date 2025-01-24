@@ -22,7 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e:chrome": "cypress run --browser chrome --headed"
+    "e2e:chrome": "cypress run --browser chrome --headed",
+    "cypress:run": "cypress run"
+
+
   },
   "eslintConfig": {
     "extends": [
