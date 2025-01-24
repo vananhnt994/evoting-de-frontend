@@ -1,6 +1,6 @@
 describe('Landing Page', () => {
   it('Checks if all items are present', () => {
-    cy.visit('http://localhost:3006/');
+    cy.visit('http://localhost:3008/');
     // check for headline
     cy.get('h1').should('contain.text', 'Meine Homepage')
                 .and('be.visible');
