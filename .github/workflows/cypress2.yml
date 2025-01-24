@@ -22,7 +22,12 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests
-        run: npm run cypress:run
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm run cypress:run
+          browser: chrome
+          wait-on: 'http://localhost:3008'
+          wait-on-timeout: 180
 
       - name: Upload Cypress screenshots and videos (if any)
         if: failure()
