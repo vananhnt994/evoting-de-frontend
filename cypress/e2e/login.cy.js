@@ -2,7 +2,7 @@ import user from '../fixtures/login.json'
 
 describe('Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3006/');
+    cy.visit('http://localhost:3008/');
 
   })
   it('Checks if all fields are present', () => {
