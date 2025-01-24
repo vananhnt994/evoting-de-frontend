@@ -1,14 +1,37 @@
 name: Cypress
-on: [push]
+
+
+on: 
+  push:
+    branches:
+      - main  # Or any other branch you want to trigger this on
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Cypress run
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'  # Upgrade to a supported version of Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build (if necessary)
+        run: npm run build  # Ensure this is needed; comment out if not required
+      
+      - name: Start application
+        run: npm start &  # Start the app in the background
+
+      - name: Wait for the app to be ready (Optional, depending on the app's start time)
+        run: |
+          sleep 10  # Adjust this as needed to ensure the app has fully started
+
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
-          build: npm run build
-          start: npm start
+          start: npm start  # Start the app with npm start
