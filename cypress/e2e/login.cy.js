@@ -1,4 +1,4 @@
-import user from '../fixtures/login.json'
+  import user from '../fixtures/login.json'
 
 describe('Login', () => {
   beforeEach(() => {
@@ -6,7 +6,7 @@ describe('Login', () => {
 
   })
   it('Checks if all fields are present', () => {
-    cy.get('button.Header_button__fU6fP').eq(1).click();
+    cy.get('#datatest-login').click();
     cy.get('form').children('div').should('have.length', 2);
     cy.get('form').children('div').find('input#email').should('be.visible');
     cy.get('form').children('div').find('input#password').should('be.visible');
@@ -15,8 +15,9 @@ describe('Login', () => {
 
   })
 
+
   it('Log in', () => {
-      cy.get('button.Header_button__fU6fP').eq(1).click();
+      cy.get('#datatest-login').click();
 
       cy.generateEmailAddress().then(($email) => {
         cy.get('form').children('div').find('input#email').type($email);

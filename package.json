@@ -16,7 +16,6 @@
     "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -24,8 +23,6 @@
     "eject": "react-scripts eject",
     "e2e:chrome": "cypress run --browser chrome --headed",
     "cypress:run": "cypress run"
-
-
   },
   "eslintConfig": {
     "extends": [

@@ -18,12 +18,10 @@ const App = () => {
         setShowSignup(true);
         setShowLogin(false); // Schließe das Login-Formular bei Signup-Klick
     };
-
     const handleLoginClick = () => {
         setShowLogin(true);
         setShowSignup(false); // Schließe das Signup-Formular bei Login-Klick
     };
-
     const handleCloseSignup = () => {
         setShowSignup(false);
     };
@@ -37,14 +35,12 @@ const App = () => {
     const handleCloseLogin = () => {
         setShowLogin(false);
     };
-
     const handleLogin = (response) => {
         if(response.status === 200) {
             setIsLoggedIn(true);
             setAddress(response.data.address);
         }
     };
-
     const handleLogout = () => {
         // Hier sollte deine Logik für das Ausloggen sein
         setIsLoggedIn(false);
@@ -61,8 +57,8 @@ const App = () => {
             />
             {!isLoggedIn ? (
                 <div>
-                    {showSignup && <Signup onClose={handleCloseSignup} onRegister={handleRegister} />}
-                    {showLogin && <Login onClose={handleCloseLogin} onLogin={handleLogin} />} {/* Zeige das Login-Formular an */}
+                    {showSignup && <Signup  onClose={handleCloseSignup} onRegister={handleRegister} />}
+                    {showLogin && <Login  onClose={handleCloseLogin} onLogin={handleLogin} />} {/* Zeige das Login-Formular an */}
                 </div> // Button zum Einloggen
             ) : (
                 <>

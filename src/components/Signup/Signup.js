@@ -16,17 +16,14 @@ const Signup = ({ onClose,onRegister }) => { // Füge onClose als Prop hinzu
 
     const signUpHandler = async (e) => {
         e.preventDefault();
-        const userData = { email, password, firstName, lastName, address, birthday };
-
+        const userData = { email, password, firstName, lastName, address,birthday  };
         try {
-            console.log(JSON.stringify(userData))
-            const response = await fetch('http://localhost:8080/api/signup', {
+            const response = await fetch('http://localhost:8081/api/citizens/signup', {
                 //mode: 'no-cors',
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json; charset=utf-8' },
                 body: JSON.stringify(userData),
             })
-
             if (!response.ok){
                 let errorMess = await  response.text()
                 throw new Error(errorMess);
@@ -37,11 +34,9 @@ const Signup = ({ onClose,onRegister }) => { // Füge onClose als Prop hinzu
             setSuccessMessage('Signup erfolgreich! Deine Benutzer-ID ist: ' + data.id);
             onClose();
         } catch (error) {
-            console.error(error);
             setErrorMessage(error.message);
         }
     };
-
     return (
         <div className={styles.container}>
             {isRegistered ? (

@@ -12,7 +12,7 @@ const TopicList = ({ address }) => {
             setError(null); // Fehler zurücksetzen
 
             try {
-                const response = await fetch(`http://localhost:8080/api/topics?address=${encodeURIComponent(address)}`);
+                const response = await fetch(`http://localhost:8082/api/topics/topics?address=${encodeURIComponent(address)}`);
                 const responseStatus = (await response).status
                 console.log("respone is "+ responseStatus);
                 if (!(responseStatus === 200)) {

@@ -14,7 +14,7 @@ const Login = ({ onClose, onLogin }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/api/login', JSON.stringify({
+      const response = await axios.post('http://localhost:8081/api/citizens/login', JSON.stringify({
         "email":email,
         "password":password,
       }),{ headers: {  "Content-Type": "application/json"  }
